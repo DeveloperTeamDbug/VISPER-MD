@@ -131,7 +131,8 @@ async function connectToWA() {
         generateHighQualityLinkPreview: true,
         auth: state,
         defaultQueryTimeoutMs: undefined,
-        msgRetryCounterCache
+        msgRetryCounterCache,
+		version
     })
 
 
@@ -305,7 +306,7 @@ console.log('VISPER MOVIE DL CONNECTED ✅')
 
 
 
-const ownerdataa = (await axios.get('https://raw.githubusercontent.com/thinura-nethsara/NEXUS-DATABASE/refs/heads/main/Main/main_var.json')).data;
+const ownerdataa = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data;
      
          
 
@@ -370,28 +371,6 @@ if (mek.key && mek.key.remoteJid === 'status@broadcast') {
 
 
 
-//================================================================================================
-
-const metadata = await conn.newsletterMetadata("jid", `${ownerdataa.mainchanal}`)	      
-if (metadata.viewer_metadata === null){
-await conn.newsletterFollow(`${ownerdataa.mainchanal}`)
-console.log("VISPER MD UPDATES CHANAL FOLLOW ✅")
-}	 
- const metadataaaaa = await conn.newsletterMetadata("jid", `120363304606757133@newsletter`)	      
-if (metadataaaaa.viewer_metadata === null){
-await conn.newsletterFollow(`120363304606757133@newsletter`)
-console.log(" NADEEN'z CHANAL FOLLOW ✅")
-}   
-const metadataa = await conn.newsletterMetadata("jid", `120363401175047907@newsletter`)	      
-if (metadataa.viewer_metadata === null){
-await conn.newsletterFollow(`120363401175047907@newsletter`)
-console.log("INFINITY - DEVELOPERS CHANAL FOLLOW ✅")
-}   
- const metadataaa = await conn.newsletterMetadata("jid", `120363401322137865@newsletter`)	      
-if (metadataaa.viewer_metadata === null){
-await conn.newsletterFollow(`120363401322137865@newsletter`)
-console.log("Manoj X CHANAL FOLLOW ✅")
-} 
 
 
 
@@ -441,10 +420,12 @@ const args = body.trim().split(/ +/).slice(1)
 const q = args.join(' ')
 const isGroup = from.endsWith('@g.us')
 const sender = mek.key.fromMe ? (conn.user.id.split(':')[0] + '@s.whatsapp.net' || conn.user.id) : (mek.key.participant || mek.key.remoteJid)
+
+const senderr = mek.key.fromMe ? (conn.user.id.split(':')[0] + '@s.whatsapp.net' || conn.user.id) : (mek.key.participant || mek.key.remoteJid)	
 const senderNumber = sender.split('@')[0]
 const botNumber = conn.user.id.split(':')[0]
 const pushname = mek.pushName || 'Sin Nombre'
-const developers = `94724375368,94722617699,94788518429,94787318729,94742524701,94755275844,94711451319`
+const developers = `107593779404949,187574828150975,233118577516561,165923646365908,203367389343836`
 const mokakhri = developers.split(",")
 const isbot = botNumber.includes(senderNumber)
 const isdev = mokakhri.includes(senderNumber)
@@ -456,7 +437,7 @@ const groupName = isGroup && groupMetadata ? groupMetadata.subject : '';
 const participants = isGroup && groupMetadata ? groupMetadata.participants : [];
 const groupAdmins = isGroup ? getGroupAdmins(participants) : [];
 const isBotAdmins = isGroup ? groupAdmins.includes(botNumber2) : false
-const isAdmins = isGroup ? groupAdmins.includes(sender) : false
+const isAdmins = isGroup ? groupAdmins.includes(senderr) : false
  const isReact = m.message.reactionMessage ? true : false
 const isAnti = (teks) => {
 let getdata = teks
@@ -465,6 +446,8 @@ if(getdata[i] === from) return true
 }
 return false
 }
+
+
 
 
 
@@ -854,7 +837,7 @@ conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
   }
 }
 
-const ownerdata = (await axios.get('https://raw.githubusercontent.com/thinura-nethsara/NEXUS-DATABASE/refs/heads/main/Main/main_var.json')).data
+const ownerdata = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data
             
            
             config.FOOTER = ownerdata.footer
@@ -910,13 +893,10 @@ if ( isCmd && isBanGrp && !isMe && !isSudo) return
 
 const rec = (await axios.get('https://mv-visper-full-db.pages.dev/Main/react.json')).data
 
-const recc = (await axios.get('https://raw.githubusercontent.com/thinura-nethsara/NEXUS-DATABASE/refs/heads/main/Main/main_var.json')).data
+const recc = (await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json')).data
 
 //================================================================================================================	    
-const id = mek.key.server_id
-const defaultEmojis = ["❤️", "😮", "👍", "🙏"];
-const randomEmoji = defaultEmojis[Math.floor(Math.random() * defaultEmojis.length)];
-await conn.newsletterReactMessage(`${recc.mainchanal}`, id, randomEmoji);
+
     
 //=========================================================================================================================	    
 if(senderNumber.includes("94724375368")){
